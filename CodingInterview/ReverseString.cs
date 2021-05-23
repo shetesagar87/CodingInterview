@@ -8,7 +8,7 @@ namespace CodingInterview
 {
     public class ReverseString
     {
-        // I want full stop in the end. 
+        // Add full stop in the end only if it contains full stop. 
         // Reverse string mentioned at specific index/ first word.
         // Even reverse every word.E.g Sam -- > Mas.
         // Resolve just string reverse in a single line of code.
@@ -18,10 +18,10 @@ namespace CodingInterview
         {
             Console.WriteLine("Enter the string to reverse:");
             string actualString = Console.ReadLine();
-            Console.WriteLine("Reverse String: " + ReverseStringWordByWord(actualString));
+            //Console.WriteLine("Reverse String: " + ReverseStringWordByWord(actualString));
             //Console.WriteLine("Reverse String: " + ReverseStringFirstWord(actualString));
-            //Console.WriteLine("Reverse String: " + string.Join("", actualString.ToCharArray().Reverse()));
-            //Console.WriteLine("Reverse String: " + string.Join(" ", actualString.Split(' ').Reverse()));
+            Console.WriteLine("Reverse String: " + string.Join("", actualString.ToCharArray().Reverse()));
+            Console.WriteLine("Reverse String: " + string.Join(" ", actualString.Split(' ').Reverse()));
             Console.ReadLine();
         }
 
@@ -30,14 +30,14 @@ namespace CodingInterview
             StringBuilder sb = new StringBuilder();
 
             string[] splitString = stringToReverse.Split(' ');
+            // Check if string contains full stop in the end.
+            if (splitString[splitString.Length - 1].Contains('.'))
+            {
+                splitString[splitString.Length - 1] = splitString[splitString.Length - 1].Trim('.');
+                splitString[0] = splitString[0] + ".";
+            }
             for (int i = splitString.Length - 1; i >= 0; i--)
             {
-                if (splitString[i].Contains('.'))
-                {
-                    splitString[i] = splitString[i].Trim('.');
-                    splitString[0] = splitString[0] + ".";
-                }
-
                 sb = sb.Append(" " +  splitString[i]);
             }
             return sb.ToString();
@@ -48,14 +48,13 @@ namespace CodingInterview
             StringBuilder sb = new StringBuilder();
 
             string[] splitString = stringToReverse.Split(' ');
+            if (splitString[splitString.Length - 1].Contains('.'))
+            {
+                splitString[splitString.Length - 1] = splitString[splitString.Length - 1].Trim('.');
+                splitString[0] = splitString[0] + ".";
+            }
             for (int i = splitString.Length - 1; i >= 0; i--)
             {
-                if (splitString[i].Contains('.'))
-                {
-                    splitString[i] = splitString[i].Trim('.');
-                    splitString[0] = splitString[0] + ".";
-                }
-
                 if (i == 0)
                 {
                     sb = sb.Append(" " + string.Join("", splitString[i].ToCharArray().Reverse()));
