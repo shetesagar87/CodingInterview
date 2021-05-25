@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="LastWordCount.cs" />
+    <Compile Include="MaxCharCount.cs" />
+    <Compile Include="MaxWordCount.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReverseString.cs" />

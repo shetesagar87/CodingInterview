@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace CodingInterview
 {
-    class Program
+    public class MaxCharCount
     {
-        static void Main(string[] args)
-        {
-            MaxWordCount.Execute();
-        }
+
     }
 }
