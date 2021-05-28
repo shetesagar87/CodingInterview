@@ -10,7 +10,7 @@ namespace CodingInterview
     {
         static void Main(string[] args)
         {
-            MaxCharCount.Execute();
+            CalculateVowConst.Execute();
         }
     }
 }
