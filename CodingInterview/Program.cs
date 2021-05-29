@@ -10,7 +10,7 @@ namespace CodingInterview
     {
         static void Main(string[] args)
         {
-            CalculateVowConst.Execute();
+            AddBigNumbers.Execute();
         }
     }
 }
