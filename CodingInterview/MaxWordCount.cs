@@ -45,23 +45,19 @@ namespace CodingInterview
             // Only reason for getting this is to minimize the iteration.
             var highestCountCollection = arrayCount.Where(a => a.Count() == arrayCount.FirstOrDefault().Count());
 
-
-            // We can do this with Linq. Also can be done using for each loop. In this section we are going via the
-            // for each loop.
             string longestWord = string.Empty;
             int wordLength = 0;
-            int numberOfTimes = 0;
+            
             foreach( var data in highestCountCollection)
             {
                 if(wordLength < data.Key.Length)
                 {
                     wordLength = data.Key.Length;
                     longestWord = data.Key;
-                    numberOfTimes = data.Count();
                 }
             }
 
-            Console.WriteLine(longestWord + " appeared " + numberOfTimes + "  times in a string. While the string lenght is " + wordLength );
+            Console.WriteLine(longestWord + " appeared " + highestCountCollection.FirstOrDefault().Count() + "  times in a string. While the string lenght is " + wordLength );
         }
 
     }
