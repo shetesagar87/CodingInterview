@@ -14,6 +14,7 @@ namespace CodingInterview
             string actualString = Console.ReadLine();
             CalculateVowConstInString(actualString);
             Console.WriteLine("===================================");
+            CalculateIndVowConstInString(actualString);
             Console.ReadLine();
         }
 
@@ -36,7 +37,53 @@ namespace CodingInterview
                 }
             }).ToArray()).Replace(" ","").Length;
 
-            Console.WriteLine("The string lenght is :" + actualStringLength + " while the number of vowels in string :" + (stringLength - constantCount) + " and number of consonants : " + constantCount);
+            Console.WriteLine("The string length is :" + actualStringLength + " while the number of vowels in string :" + (stringLength - constantCount) + " and number of consonants : " + constantCount);
+        }
+
+        private static void CalculateIndVowConstInString(string actualString)
+        {
+            //char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
+
+            int actualStringLength = actualString.Length;
+            int[] list = new int[256];
+            int stringLength = actualString.Replace(" ", "").Length;
+            int constantCount = string.Join("", actualString.ToCharArray().Select(w =>
+            {
+               return VovelCount(w,ref list);
+            }).ToArray()).Replace(" ", "").Length;
+
+            Console.WriteLine("The string length is :" + actualStringLength + " while the number of vowels in string :" + (stringLength - constantCount) + " and number of consonants : " + constantCount);
+            Console.WriteLine("Char a is appearing " + list['a'] + "times.");
+            Console.WriteLine("Char e is appearing " + list['e'] + "times.");
+            Console.WriteLine("Char i is appearing " + list['i'] + "times.");
+            Console.WriteLine("Char o is appearing " + list['o'] + "times.");
+            Console.WriteLine("Char u is appearing " + list['u'] + "times.");
+
+        }
+
+
+        private static char VovelCount(char a, ref int[] list)
+        {
+            if (a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u')
+            {
+                switch (a)
+                {
+                    case 'a':
+                    case 'e':
+                    case 'i':
+                    case 'o':
+                    case 'u':
+                        list[a] = list[a]+1;
+                        break;
+                    default:
+                        break;
+                }
+                return ' ';
+            }
+            else
+                return a;
+            
+
         }
     }
 }
