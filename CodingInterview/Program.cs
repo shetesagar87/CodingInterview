@@ -10,7 +10,12 @@ namespace CodingInterview
     {
         static void Main(string[] args)
         {
-            CalculateVowConst.Execute();
+            //Top2IntegerArray.Execute();
+            //QuickSort qs = new QuickSort();
+            //qs.Execute();
+
+            BubbleSort bs = new BubbleSort();
+            bs.Execute();
         }
     }
 }
