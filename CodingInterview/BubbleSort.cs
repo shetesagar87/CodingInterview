@@ -18,7 +18,7 @@ namespace CodingInterview
                 Console.WriteLine("Kindly enter the dataarray value");
                 return;
             }
-            
+            Console.WriteLine("Solving the sorting by Bubble Sort");
             BubbleSortFunct(dataarray);
             foreach (int data in dataarray)
             {
@@ -29,28 +29,29 @@ namespace CodingInterview
 
         private void BubbleSortFunct(int[] input)
         {
-            var itemMoved = false;
-            do
+            int n = input.Length;
+
+            for (int i = 0; i < n - 1; i++)
             {
-                itemMoved = false;
-                for (int i = 0; i < input.Count() - 1; i++)
+                bool swapped = false;
+
+                for (int j = 0; j < n - i - 1; j++)
                 {
-                    if (input[i] > input[i + 1])
+                    if (input[j] > input[j + 1])
                     {
-                        var lowerValue = input[i + 1];
-                        input[i + 1] = input[i];
-                        input[i] = lowerValue;
-                        itemMoved = true;
+                        // Swap
+                        int temp = input[j];
+                        input[j] = input[j + 1];
+                        input[j + 1] = temp;
+                        swapped = true;
                     }
                 }
-                foreach (int data in dataarray)
-                {
-                    Console.WriteLine(data);
-                }
-                Console.ReadLine();
-            } while (itemMoved);
+
+                // Optimization: stop if already sorted
+                if (!swapped)
+                    break;
+            }
+
         }
     }
-
-    
 }

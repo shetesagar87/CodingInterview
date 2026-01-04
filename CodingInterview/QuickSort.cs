@@ -19,6 +19,9 @@ namespace CodingInterview
                 Console.WriteLine("Kindly enter the dataarray value");
                 return;
             }
+
+            Console.WriteLine("Solving the sorting by Quick Sort");
+
             length = dataarray.Length-1;
             quickSort(0, length);
             foreach(int data in dataarray)
@@ -28,49 +31,46 @@ namespace CodingInterview
             Console.ReadLine();
         }
 
+        private int partition(int low, int high)
+        {
+
+            // choose the pivot
+            int pivot = dataarray[high];
+
+            // index of smaller element and indicates 
+            // the right position of pivot found so far
+            int i = low - 1;
+
+            // traverse arr[low..high] and move all smaller
+            // elements to the left side. Elements from low to 
+            // i are smaller after every iteration
+            for (int j = low; j <= high - 1; j++)
+            {
+                if (dataarray[j] < pivot)
+                {
+                    i++;
+                    swap(i, j);
+                }
+            }
+
+            // move pivot after smaller elements and
+            // return its position
+            swap(i + 1, high);
+            return i + 1;
+        }
+
         private void quickSort(int low, int high)
         {
-            int i = low;
-            int j = high;
-
-            // pivot is middle index
-            int pivot = dataarray[low + (high - low) / 2];
-
-            // Divide into two arrays
-            while (i <= j)
+            if (low < high)
             {
-                /**
-                 * As shown in above image, In each iteration, we will identify a
-                 * number from left side which is greater then the pivot value, and
-                 * a number from right side which is less then the pivot value. Once
-                 * search is complete, we can swap both numbers.
-                 */
-                while (dataarray[i] < pivot)
-                {
-                    i++;
-                }
-                while (dataarray[j] > pivot)
-                {
-                    j--;
-                }
-                if (i <= j)
-                {
-                    swap(i, j);
-                    // move index to next position on both sides
-                    i++;
-                    j--;
-                }
-            }
 
-            // calls quickSort() method recursively
-            if (low < j)
-            {
-                quickSort(low, j);
-            }
+                // pi is the partition return index of pivot
+                int pi = partition(low, high);
 
-            if (i < high)
-            {
-                quickSort(i, high);
+                // recursion calls for smaller elements
+                // and greater or equals elements
+                quickSort(low, pi - 1);
+                quickSort(pi + 1, high);
             }
         }
 
