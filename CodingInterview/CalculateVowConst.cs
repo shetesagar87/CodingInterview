@@ -61,6 +61,40 @@ namespace CodingInterview
 
         }
 
+        private static void VovelCountusingList(string actualString)
+        {
+            string vowels = "aeiouAEIOU";
+
+            int vowelCount = actualString.Count(c => char.IsLetter(c) && vowels.Contains(c));
+            int consonantCount = actualString.Count(c => char.IsLetter(c) && !vowels.Contains(c));
+
+            Console.WriteLine("Vovel Count: " + vowelCount + "times.");
+            Console.WriteLine("Constant Count " + consonantCount + "times.");
+        }
+
+        private static void VovelCountusingSystem(string actualString)
+        {
+
+            int vowels = 0;
+            int consonants = 0;
+
+            foreach (char c in actualString)
+            {
+                if (!char.IsLetter(c))
+                    continue;
+
+                char ch = char.ToLower(c);
+
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                    vowels++;
+                else
+                    consonants++;
+            }
+
+            Console.WriteLine($"Vowels: {vowels}");
+            Console.WriteLine($"Consonants: {consonants}");
+        }
+
 
         private static char VovelCount(char a, ref int[] list)
         {
@@ -73,7 +107,7 @@ namespace CodingInterview
                     case 'i':
                     case 'o':
                     case 'u':
-                        list[a] = list[a]+1;
+                        list[a] = list[a] + 1;
                         break;
                     default:
                         break;
@@ -82,7 +116,7 @@ namespace CodingInterview
             }
             else
                 return a;
-            
+
 
         }
     }
